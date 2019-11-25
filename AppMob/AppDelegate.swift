@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ApplicationMobile
 //
-//  Created by Yoan Delvaux on 19/11/2019.
+//  Created by Yoan Delvaux on 25/11/2019.
 //  Copyright © 2019 Yoan Delvaux. All rights reserved.
 //
 

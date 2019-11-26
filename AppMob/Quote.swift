@@ -15,3 +15,11 @@ struct Quote {
     var imageData: Data
     
 }
+
+struct DefQuote : Codable {
+    var quoteText : String
+    var quoteAuthor : String
+    var senderName : String
+    var senderLink : String
+    var quoteLink : String
+}

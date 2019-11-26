@@ -17,11 +17,12 @@ class QuoteService {
         let session = URLSession(configuration: .default)
 
         let task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
             if let data = data, error == nil {
                 if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
-                        let text = responseJSON["quoteText"],
-                        let author = responseJSON["quoteAuthor"] {
+                    if let responseJSON = try? JSONDecoder().decode(DefQuote.self, from: data),
+                        let text = (responseJSON.quoteText ?? nil),
+                        let author = (responseJSON.quoteAuthor ?? nil) {
                             getImage { (data) in
                             if let data = data {
                                 let quote = Quote(text: text, author: author, imageData: data)
@@ -40,6 +41,8 @@ class QuoteService {
                 callback(false, nil)
             }
         }
+        }
+        
         task.resume()
     }
 
@@ -56,6 +59,7 @@ class QuoteService {
     private static func getImage(completionHandler: @escaping ((Data?) -> Void)) {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: pictureUrl) { (data, response, error) in
+            DispatchQueue.main.async {
             if let data = data, error == nil {
                 if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                     completionHandler(data)
@@ -66,6 +70,7 @@ class QuoteService {
                 completionHandler(nil)
             }
         }
-        task.resume()
-}
+        }
+    task.resume()
+    }
 }

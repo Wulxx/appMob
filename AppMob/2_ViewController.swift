@@ -11,7 +11,7 @@ import UIKit
 class __ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var quoteTextView: UITextView!
     @IBAction func tappedNewQuoteButton(_ sender: Any) {
      QuoteService.getQuote { (success, quote) in
                 if success, let quote = quote {
@@ -23,10 +23,23 @@ class __ViewController: UIViewController {
         }
 
         private func update(quote: Quote) {
-            quoteLabel.text = quote.text
+            quoteTextView.alpha = 0
+            imageView.alpha = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imageView.alpha = 1
+                self.quoteTextView.alpha = 1
+            }) { (true) in
+            }
+            
+            quoteTextView.text = quote.text
             authorLabel.text = quote.author
             imageView.image = UIImage(data: quote.imageData)
         }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        quoteTextView.isEditable = false
+    }
 
         private func presentAlert() {
             let alertVC = UIAlertController(title: "Error", message: "The quote download failed.", preferredStyle: .alert)

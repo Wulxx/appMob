@@ -12,7 +12,7 @@ class QuoteService {
     private static let quoteUrl = URL(string: "https://api.forismatic.com/api/1.0/")!
     private static let pictureUrl = URL(string: "https://source.unsplash.com/random/1000x1000")!
 
-    static func getQuote() {
+    static func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
         let request = createQuoteRequest()
         let session = URLSession(configuration: .default)
 
@@ -22,11 +22,22 @@ class QuoteService {
                     if let responseJSON = try? JSONDecoder().decode([String: String].self, from: data),
                         let text = responseJSON["quoteText"],
                         let author = responseJSON["quoteAuthor"] {
-                            print(text)
-                            print(author)
-                        getImage()
+                            getImage { (data) in
+                            if let data = data {
+                                let quote = Quote(text: text, author: author, imageData: data)
+                                callback(true, quote)
+                            } else {
+                                callback(false, nil)
+                            }
+                        }
+                    } else {
+                        callback(false, nil)
                     }
+                } else {
+                    callback(false, nil)
                 }
+            } else {
+                callback(false, nil)
             }
         }
         task.resume()
@@ -46,11 +57,15 @@ class QuoteService {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: pictureUrl) { (data, response, error) in
             if let data = data, error == nil {
-            if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                completionHandler(data)
+                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                    completionHandler(data)
+                } else {
+                    completionHandler(nil)
+                }
+            } else {
+                completionHandler(nil)
             }
         }
-    }
         task.resume()
 }
 }

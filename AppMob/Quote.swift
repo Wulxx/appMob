@@ -1,0 +1,17 @@
+//
+//  Quote.swift
+//  AppMob
+//
+//  Created by Yoan Delvaux on 26/11/2019.
+//  Copyright © 2019 Yoan Delvaux. All rights reserved.
+//
+
+import Foundation
+
+struct Quote {
+    
+    var text: String
+    var author: String
+    var imageData: Data
+    
+}

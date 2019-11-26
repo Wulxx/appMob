@@ -49,7 +49,7 @@
         <!--Item-->
         <scene sceneID="tzr-Ab-wpn">
             <objects>
-                <viewController id="kUH-VQ-xKF" sceneMemberID="viewController">
+                <viewController id="kUH-VQ-xKF" customClass="__ViewController" customModule="AppMob" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K74-QL-8tm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

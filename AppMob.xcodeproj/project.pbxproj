@@ -13,6 +13,8 @@
 		5F0E1284238BFFF500E106C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0E1282238BFFF500E106C5 /* Main.storyboard */; };
 		5F0E1286238BFFF800E106C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F0E1285238BFFF800E106C5 /* Assets.xcassets */; };
 		5F0E1289238BFFF800E106C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F0E1287238BFFF800E106C5 /* LaunchScreen.storyboard */; };
+		5F0E1291238C082100E106C5 /* 2_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E1290238C082100E106C5 /* 2_ViewController.swift */; };
+		5F0E1293238D199800E106C5 /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E1292238D199800E106C5 /* QuoteService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5F0E1285238BFFF800E106C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F0E1288238BFFF800E106C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F0E128A238BFFF800E106C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F0E1290238C082100E106C5 /* 2_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_ViewController.swift; sourceTree = "<group>"; };
+		5F0E1292238D199800E106C5 /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				5F0E1285238BFFF800E106C5 /* Assets.xcassets */,
 				5F0E1287238BFFF800E106C5 /* LaunchScreen.storyboard */,
 				5F0E128A238BFFF800E106C5 /* Info.plist */,
+				5F0E1290238C082100E106C5 /* 2_ViewController.swift */,
+				5F0E1292238D199800E106C5 /* QuoteService.swift */,
 			);
 			path = AppMob;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F0E1281238BFFF500E106C5 /* ViewController.swift in Sources */,
+				5F0E1291238C082100E106C5 /* 2_ViewController.swift in Sources */,
+				5F0E1293238D199800E106C5 /* QuoteService.swift in Sources */,
 				5F0E127D238BFFF500E106C5 /* AppDelegate.swift in Sources */,
 				5F0E127F238BFFF500E106C5 /* SceneDelegate.swift in Sources */,
 			);

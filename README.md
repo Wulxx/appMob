@@ -8,6 +8,7 @@
 - Comment cela fonctionne ?
 - Les fonctionnalités manquantes 
 - Qu'ai-je donc appris ? 
+- Auteur
 
 ---
 
@@ -55,3 +56,11 @@ Il y a ici une seule fonctionnalité manquante. Il s'agit de la fonctionnalité 
 ## Qu'ai-je donc appris ? 
 
 J'ai pu découvrir ici un nouveau langage qui m'était totalement inconnu, le Swift. En effet, ce langage a été mis à ma portée, j'en ai profité pour l'apprendre et ainsi l'utiliser. (Un grand merci à Alexendre Obli pour son aide, lui étant plus professionnel dans ce langage, pour son aide précieuse.)
+
+---
+
+## Auteur
+
+Auteur du projet : 
+
+Yoan DELVAUX alias [@Wulxx](https://github.com/Wulxx)

@@ -26,7 +26,7 @@
                                 <rect key="frame" x="20" y="714" width="374" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="40"/>
-                                <state key="normal" title="Me ? ">
+                                <state key="normal" title="Click me !">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -58,7 +58,7 @@
                                 <rect key="frame" x="20" y="737" width="374" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
-                                <state key="normal" title="New quote">
+                                <state key="normal" title="Click here for a new quote !">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <connections>
@@ -85,12 +85,18 @@
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="35"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="k7n-Ew-gGH">
+                                <rect key="frame" x="186" y="698" width="42" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <viewLayoutGuide key="safeArea" id="59q-9X-lRK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Picture Quote" image="sun.haze.fill" catalog="system" id="aBA-tv-ONN"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="k7n-Ew-gGH" id="mPj-I5-YvB"/>
                         <outlet property="authorLabel" destination="lhH-L3-IdU" id="I3K-vl-GhA"/>
                         <outlet property="imageView" destination="6i1-Vd-xr5" id="85T-Xl-Fyr"/>
                         <outlet property="quoteTextView" destination="fpJ-cQ-QkB" id="YLN-EX-fGI"/>

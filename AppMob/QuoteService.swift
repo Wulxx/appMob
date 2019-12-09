@@ -9,21 +9,25 @@
 import Foundation
 
 class QuoteService {
-    private static let quoteUrl = URL(string: "https://api.forismatic.com/api/1.0/")!
-    private static let pictureUrl = URL(string: "https://source.unsplash.com/random/1000x1000")!
-
-    static func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
+    private init() {}
+    static var shared = QuoteService()
+    private let quoteUrl = URL(string: "https://api.forismatic.com/api/1.0/")!
+    private let pictureUrl = URL(string: "https://source.unsplash.com/random/1000x1000")!
+    private var task: URLSessionDataTask?
+    
+    func getQuote(callback: @escaping (Bool, Quote?) -> Void) {
         let request = createQuoteRequest()
         let session = URLSession(configuration: .default)
-
-        let task = session.dataTask(with: request) { (data, response, error) in
+        
+        task?.cancel()
+        task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
             if let data = data, error == nil {
                 if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                     if let responseJSON = try? JSONDecoder().decode(DefQuote.self, from: data),
                         let text = (responseJSON.quoteText ?? nil),
                         let author = (responseJSON.quoteAuthor ?? nil) {
-                            getImage { (data) in
+                        self.getImage { (data) in
                             if let data = data {
                                 let quote = Quote(text: text, author: author, imageData: data)
                                 callback(true, quote)
@@ -43,10 +47,10 @@ class QuoteService {
         }
         }
         
-        task.resume()
+        task?.resume()
     }
 
-    private static func createQuoteRequest() -> URLRequest {
+    private func createQuoteRequest() -> URLRequest {
         var request = URLRequest(url: quoteUrl)
         request.httpMethod = "POST"
 
@@ -56,9 +60,11 @@ class QuoteService {
         return request
     }
     
-    private static func getImage(completionHandler: @escaping ((Data?) -> Void)) {
+    private func getImage(completionHandler: @escaping ((Data?) -> Void)) {
         let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: pictureUrl) { (data, response, error) in
+        
+        task?.cancel()
+        task = session.dataTask(with: pictureUrl) { (data, response, error) in
             DispatchQueue.main.async {
             if let data = data, error == nil {
                 if let response = response as? HTTPURLResponse, response.statusCode == 200 {
@@ -71,6 +77,6 @@ class QuoteService {
             }
         }
         }
-    task.resume()
+        task?.resume()
     }
 }

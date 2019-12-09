@@ -12,8 +12,12 @@ class __ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var quoteTextView: UITextView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBAction func tappedNewQuoteButton(_ sender: Any) {
-     QuoteService.getQuote { (success, quote) in
+        toggleActivityIndicator(shown: true)
+            QuoteService.shared.getQuote { (success, quote) in
+                self.toggleActivityIndicator(shown: false)
+
                 if success, let quote = quote {
                     self.update(quote: quote)
                 } else {
@@ -22,6 +26,10 @@ class __ViewController: UIViewController {
             }
         }
 
+        private func toggleActivityIndicator(shown: Bool) {
+            activityIndicator.isHidden = !shown
+        }
+   
         private func update(quote: Quote) {
             quoteTextView.alpha = 0
             imageView.alpha = 0

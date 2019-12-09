@@ -62,20 +62,22 @@ class QuoteService {
     
     private func getImage(completionHandler: @escaping ((Data?) -> Void)) {
         let session = URLSession(configuration: .default)
-        
+
         task?.cancel()
         task = session.dataTask(with: pictureUrl) { (data, response, error) in
             DispatchQueue.main.async {
-            if let data = data, error == nil {
-                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    completionHandler(data)
-                } else {
+                guard let data = data, error == nil else {
                     completionHandler(nil)
+                    return
                 }
-            } else {
-                completionHandler(nil)
+
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    completionHandler(nil)
+                    return
+                }
+
+                completionHandler(data)
             }
-        }
         }
         task?.resume()
     }
